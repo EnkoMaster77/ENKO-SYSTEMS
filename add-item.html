@@ -13,6 +13,9 @@
 
   <section class="form-section">
     <form id="addItemForm">
+let recycleItems = JSON.parse(localStorage.getItem("recycleItems")) || [];
+recycleItems.push({ name: material, amount, price, date });
+localStorage.setItem("recycleItems", JSON.stringify(recycleItems));
       <label for="material">ชื่อวัสดุ:</label>
       <input type="text" id="material" name="material" required />
 
