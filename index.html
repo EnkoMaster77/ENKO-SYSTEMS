@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เข้าสู่ระบบ ENKO</title>
+
+  <!-- โหลด Tailwind CSS สำหรับตกแต่งแบบสวย -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- โหลด Font Awesome สำหรับใช้ไอคอน -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- เชื่อมกับ style.css ที่เราจะสร้างไว้ -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="gradient-bg h-screen flex items-center justify-center">
+
+  <!-- กล่อง login -->
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm animate-fadeIn">
+    <h1 class="text-xl font-bold text-center text-blue-700 mb-6">
+      <i class="fas fa-recycle mr-2"></i> ENKO รีไซเคิล
+    </h1>
+
+    <!-- ช่องกรอก Username -->
+    <input type="text" id="username" placeholder="ชื่อผู้ใช้" class="w-full mb-4 px-4 py-2 border rounded" />
+
+    <!-- ช่องกรอก Password -->
+    <input type="password" id="password" placeholder="รหัสผ่าน" class="w-full mb-4 px-4 py-2 border rounded" />
+
+    <!-- ปุ่ม login -->
+    <button onclick="login()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded hover-scale">
+      <i class="fas fa-sign-in-alt mr-1"></i> เข้าสู่ระบบ
+    </button>
+
+    <!-- กล่องเตือนเมื่อ login ผิด -->
+    <div id="loginAlert" class="text-red-500 text-center mt-4 hidden">
+      <span id="loginAlertText">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</span>
+    </div>
+  </div>
+
+  <!-- เชื่อมกับไฟล์ scripts.js ที่มีฟังก์ชัน login() -->
+  <script src="scripts.js"></script>
+</body>
+</html>
