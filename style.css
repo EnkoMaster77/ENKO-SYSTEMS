@@ -138,6 +138,35 @@ form input {
   font-weight: bold;
   text-align: center;
 }
+#itemsTableSection {
+  padding: 40px;
+}
+#itemsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+#itemsTable thead {
+  background-color: #2c2c2c;
+}
+#itemsTable th, #itemsTable td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #2c2c2c;
+}
+#itemsTable th {
+  color: #ffffff;
+  font-weight: 600;
+}
+#itemsTable td {
+  color: #e0e0e0;
+}
+#itemsTable tr:hover {
+  background-color: #2e2e2e;
+}
 
 /* Responsive */
 @media screen and (max-width: 768px) {
