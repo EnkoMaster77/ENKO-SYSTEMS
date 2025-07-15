@@ -1,49 +1,82 @@
-/* ตั้งค่าพื้นฐานให้หน้าเว็บดูเรียบ เท่ */
+/* พื้นฐานของหน้า */
 body {
   margin: 0;
   padding: 0;
   background-color: #121212;
   color: #e0e0e0;
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
 }
 
-/* หัวข้อหลัก */
-h1, h2, h3 {
-  color: #ffffff;
+/* Navbar ด้านบน */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f;
+  padding: 20px 40px;
+  border-bottom: 1px solid #2c2c2c;
+}
+.logo {
+  font-size: 20px;
   font-weight: 600;
 }
-
-/* ปุ่มใช้งาน */
-.button {
-  background-color: #00b894;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.button:hover {
-  background-color: #019870;
+.user {
+  font-size: 16px;
+  color: #00b894;
 }
 
-/* การ์ดหรือกล่องข้อมูล */
+/* การ์ดสรุปยอด */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
 .card {
   background-color: #1f1f1f;
   padding: 20px;
-  margin: 20px 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
 }
-
-/* ลิงก์ */
-a {
+.card:hover {
+  transform: translateY(-4px);
+}
+.card h3 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: 16px;
   color: #00b894;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }
 
+/* กราฟและกล่องแสดงผล */
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0 40px 60px;
+}
+.chart-container {
+  flex: 1 1 500px;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.chart-container h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .charts {
+    flex-direction: column;
+  }
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
