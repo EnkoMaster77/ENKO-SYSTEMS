@@ -1,72 +1,41 @@
-// ✅ 1. กำหนดรายชื่อผู้ใช้ที่สามารถเข้าสู่ระบบได้
-const users = [
-  { username: "admin", password: "1234", role: "admin" },
-  { username: "user1", password: "5678", role: "user" }
-];
+// 📌 แสดง Modal ถ้ายังไม่ได้ล็อกอิน
+window.addEventListener("DOMContentLoaded", () => {
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
-// ✅ 2. ฟังก์ชันเมื่อกดปุ่มเข้าสู่ระบบ
-function login() {
-  // ดึงค่าจากช่องกรอก username และ password
-  const u = document.getElementById("username").value.trim();
-  const p = document.getElementById("password").value.trim();
-  const alertBox = document.getElementById("loginAlert");
+  if (isLoggedIn !== "true") {
+    showLoginModal("กรุณาเข้าสู่ระบบก่อน");
+  }
+});
 
-  // ค้นหาผู้ใช้ที่ตรงกับข้อมูลที่กรอก
-  const found = users.find(person => person.username === u && person.password === p);
+// 🧠 ฟังก์ชันเปิด Modal และใส่ข้อความ
+function showLoginModal(message) {
+  const modal = document.getElementById("loginModal");
+  const messageBox = document.getElementById("loginMessage");
 
-  if (found) {
-    // ถ้าเจอ → เก็บข้อมูลไว้ใน localStorage แล้วไปหน้า dashboard
-    localStorage.setItem("enkoLoggedIn", "true");
-    localStorage.setItem("enkoUsername", found.username);
-    localStorage.setItem("enkoRole", found.role);
-    window.location.href = "dashboard.html";
+  if (modal && messageBox) {
+    messageBox.textContent = message;
+    modal.style.display = "flex";
   } else {
-    // ถ้าไม่เจอ → แสดงข้อความเตือนว่า login ไม่ผ่าน
-    alertBox.classList.remove("hidden");
-    alertBox.textContent = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+    console.warn("ไม่พบ modal หรือองค์ประกอบข้อความ");
   }
 }
 
-// ✅ 3. ฟังก์ชันออกจากระบบ
-function logout() {
-  localStorage.clear(); // เคลียร์ข้อมูล login
-  window.location.href = "index.html"; // กลับไปหน้า login
-}
-
-// ✅ 4. ฟังก์ชันสำหรับเปลี่ยนหน้า
-function goTo(page) {
-  window.location.href = page; // เช่น goTo('purchase.html')
-}
-
-// ✅ 5. ฟังก์ชันแสดงชื่อผู้ใช้และบทบาท (ใช้ใน dashboard)
-function showUserInfo() {
-  const name = localStorage.getItem("enkoUsername");
-  const role = localStorage.getItem("enkoRole");
-
-  const nameBox = document.getElementById("displayUser");
-  const roleBox = document.getElementById("displayRole");
-
-  if (nameBox) nameBox.textContent = name;
-  if (roleBox) roleBox.textContent = role;
-}
-
-// ✅ 6. ฟังก์ชันตรวจสอบว่าผู้ใช้ login อยู่ไหม (ใช้กับทุกหน้า)
-function checkLogin() {
-  const loggedIn = localStorage.getItem("enkoLoggedIn");
-  if (loggedIn !== "true") {
-    alert("กรุณาเข้าสู่ระบบก่อน");
-    window.location.href = "index.html";
+// ❌ ปิด Modal (เมื่อกดปุ่มตกลง)
+function closeModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) {
+    modal.style.display = "none";
   }
 }
 
-// ✳️ เรียก showUserInfo อัตโนมัติเมื่อโหลดหน้า dashboard
-window.onload = function () {
-  // ถ้า element ที่ใช้แสดงชื่อผู้ใช้มีอยู่ → แสดงข้อมูลได้เลย
-  if (document.getElementById("displayUser")) {
-    showUserInfo();
-  }
+// ✅ ล็อกอินเมื่อผู้ใช้กดปุ่ม
+function login() {
+  sessionStorage.setItem("isLoggedIn", "true");
 
-  // ถ้าต้องการบังคับให้ login ก่อนเข้า → ใช้ checkLogin()
-  checkLogin();
-};
+  // ปิด Modal ถ้ายังเปิดอยู่
+  closeModal();
+
+  // แจ้งผู้ใช้หรือรีเฟรชหน้า
+  alert("เข้าสู่ระบบสำเร็จ!");
+}
 
