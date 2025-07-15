@@ -1,1 +1,49 @@
+/* ตั้งค่าพื้นฐานให้หน้าเว็บดูเรียบ เท่ */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* หัวข้อหลัก */
+h1, h2, h3 {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ปุ่มใช้งาน */
+.button {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: #019870;
+}
+
+/* การ์ดหรือกล่องข้อมูล */
+.card {
+  background-color: #1f1f1f;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ลิงก์ */
+a {
+  color: #00b894;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 
