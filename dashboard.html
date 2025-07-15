@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - ENKO</title>
+
+  <!-- Tailwind CSS สำหรับตกแต่ง -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome สำหรับไอคอน -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- เชื่อม CSS ของเรา -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gradient-to-tr from-indigo-100 to-blue-200 min-h-screen text-gray-800">
+
+  <!-- ส่วนหัวของหน้า dashboard -->
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-lg font-bold text-indigo-700">
+      <i class="fas fa-home mr-2"></i> แดชบอร์ด ENKO
+    </h1>
+    <button onclick="logout()" class="text-red-600 hover:text-red-800">
+      <i class="fas fa-sign-out-alt mr-1"></i> ออกจากระบบ
+    </button>
+  </header>
+
+  <!-- เนื้อหาหลัก -->
+  <main class="p-6">
+    <h2 class="text-xl font-semibold mb-4">สวัสดีคุณ <span id="displayUser" class="text-indigo-700"></span> 👋</h2>
+
+    <p class="mb-2">บทบาทของคุณ: <strong id="displayRole">...</strong></p>
+
+    <!-- ปุ่มไปยังหน้าอื่น ๆ -->
+    <div class="grid grid-cols-2 gap-4 mt-6 max-w-md">
+      <button onclick="goTo('purchase.html')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        ➕ เพิ่มรายการซื้อ
+      </button>
+      <button onclick="goTo('sales.html')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        ➖ เพิ่มรายการขาย
+      </button>
+      <button onclick="goTo('stock.html')" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+        📦 ดูคลังวัสดุ
+      </button>
+      <button onclick="goTo('records.html')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+        📄 รายการทั้งหมด
+      </button>
+    </div>
+  </main>
+
+  <!-- เชื่อมฟังก์ชัน JavaScript -->
+  <script src="scripts.js"></script>
+</body>
+</html>
 
