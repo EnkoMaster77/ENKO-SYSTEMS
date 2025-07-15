@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ดูรายการทั้งหมด - ENKO</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">📋 รายการวัสดุรีไซเคิลทั้งหมด</div>
+  </nav>
+
+  <section id="itemsTableSection">
+    <table id="itemsTable">
+      <thead>
+        <tr>
+          <th>ชื่อวัสดุ</th>
+          <th>ปริมาณ (กก.)</th>
+          <th>ราคา (บาท)</th>
+          <th>วันที่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- แสดงรายการจาก localStorage -->
+      </tbody>
+    </table>
+  </section>
+
+  <script>
+    // โหลดรายการจาก localStorage แล้วแสดงในตาราง
+    const itemsTableBody = document.querySelector("#itemsTable tbody");
+    const savedItems = JSON.parse(localStorage.getItem("recycleItems")) || [];
+
+    if (savedItems.length === 0) {
+      itemsTableBody.innerHTML = `<tr><td colspan="4" style="text-align:center">ไม่มีข้อมูล</td></tr>`;
+    } else {
+      savedItems.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${item.name}</td>
+                         <td>${item.amount}</td>
+                         <td>฿${item.price}</td>
+                         <td>${item.date}</td>`;
+        itemsTableBody.appendChild(row);
+      });
+    }
+  </script>
+</body>
+</html>
